@@ -7,13 +7,13 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.widget.EditText
-import java.lang.IllegalArgumentException
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-// TODO write comments
+
 /**
- *
+ * This class Allows the user to enter a date as a text and then verify it based on date format, divider charchater
+ * and min or max date
  */
 class DateEditText : EditText {
 
@@ -51,13 +51,16 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * init edit text with given argument from AttributeSet
+     * @param attrs: AttributeSet
      */
     private fun initDateEditText(attrs: AttributeSet? = null) {
         isCursorVisible = false
         setOnClickListener { setSelection(text.length) }
         inputType = InputType.TYPE_CLASS_NUMBER
-        if (attrs == null) { return }
+        if (attrs == null) {
+            return
+        }
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DateEditText, 0, 0)
         getDividerCharacter(typedArray)
         getDateFormat(typedArray)
@@ -67,7 +70,8 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * get Date Format using from array and set edit text hint based on date format
+     * @param typedArray: TypedArray
      */
     private fun getDateFormat(typedArray: TypedArray) {
         val dateFormat = typedArray.getInt(R.styleable.DateEditText_dateFormat, 0)
@@ -82,19 +86,22 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     *  get Divider Character from typed array
+     *   @param typedArray: TypedArray
      */
     private fun getDividerCharacter(typedArray: TypedArray) {
         val dividerCharacter = typedArray.getInt(R.styleable.DateEditText_dividerCharacter, 0)
         if (dividerCharacter == 0) {
             this.dividerCharacter = slash
-        }else if (dividerCharacter == 1) {
+        } else if (dividerCharacter == 1) {
             this.dividerCharacter = minus
         }
     }
 
     /**
-     *
+     *  get max date from typed array and throw Exception if the date is invalid
+     *   @param typedArray: TypedArray
+     *   @throws IllegalArgumentException
      */
     private fun getMaxDate(typedArray: TypedArray) {
         val maxDateString = typedArray.getString(R.styleable.DateEditText_maxDate) ?: return
@@ -108,7 +115,9 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     *   get min date from typed array and throw an Exception if the date is invalid
+     *   @param typedArray: TypedArray
+     *   @throws IllegalArgumentException
      */
     private fun getMinDate(typedArray: TypedArray) {
         val minDateString = typedArray.getString(R.styleable.DateEditText_minDate) ?: return
@@ -122,26 +131,28 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * validate min and max date, throw an Exception if the date is invalid
+     *   @param date: String
+     *   @throws IllegalArgumentException
      */
-    private  fun validateMinMaxDate(date: String){
-        if (dateFormat == MMyyDateFormat){
+    private fun validateMinMaxDate(date: String) {
+        if (dateFormat == MMyyDateFormat) {
             if (date.length != 5) {
                 throw IllegalArgumentException("Invalid date")
             }
-            val month = date.substring(0,2).toInt()
+            val month = date.substring(0, 2).toInt()
             if (month > 12 || month <= 0) {
                 throw IllegalArgumentException("Invalid date")
             }
-        }else if (dateFormat == ddMMyyyyDateFormat){
-            if (date.length != 10){
+        } else if (dateFormat == ddMMyyyyDateFormat) {
+            if (date.length != 10) {
                 throw IllegalArgumentException("Invalid date")
             }
 
-            val day = date.substring(0,2).toInt()
-            val month = date.substring(3,5).toInt()
+            val day = date.substring(0, 2).toInt()
+            val month = date.substring(3, 5).toInt()
             val year = date.substring(6, 10).toInt()
-            val isLeapYear =  (year % 100 != 0 || year % 400 != 0)
+            val isLeapYear = (year % 100 != 0 || year % 400 != 0)
 
             if (month > 12 || month <= 0) {
                 throw IllegalArgumentException("Invalid date")
@@ -152,21 +163,22 @@ class DateEditText : EditText {
                 throw IllegalArgumentException("Invalid date")
             } else if (month == 2 && day == 31) {
                 throw IllegalArgumentException("Invalid date")
-            }else if (month == 2 && day == 29 && !isLeapYear) {
+            } else if (month == 2 && day == 29 && !isLeapYear) {
                 throw IllegalArgumentException("Invalid date")
             }
         }
     }
 
     /**
-     *
+     * user should call this function from activity any android ui components to start listening and updating the edit text
      */
     fun listen() {
         addTextChangedListener(dateTextWatcher)
     }
 
     /**
-     *
+     * When an object of this type is attached to an Editable, its methods will be called when the text is changed. "from https://developer.android.com/reference/android/text/TextWatcher"
+     * All updates and validation of text are done here
      */
     private val dateTextWatcher = object : TextWatcher {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -188,10 +200,13 @@ class DateEditText : EditText {
         override fun afterTextChanged(s: Editable) {}
 
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+
     }
 
     /**
-     *
+     * validate user text input
+     * @param value: String (user text input)
      */
     private fun validate(value: String): String {
         if (dateFormat == MMyyDateFormat) {
@@ -204,7 +219,9 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * validate user text input for ddMMyyyy Date Format
+     * @param  value: String (user text input)
+     * @return the corrected value
      */
     private fun validateddMMyyyyDateFormat(value: String): String {
         var mValue = value
@@ -256,7 +273,9 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * validate user text input for MMyy Date Format
+     * @param  value: String (user text input)
+     * @return the corrected value
      */
     private fun validateMMyyDateFormat(value: String): String {
         var mValue = value
@@ -287,7 +306,7 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * get edit text based on dateFormat length
      */
     private fun getEditText(): String {
         return if (text.length >= dateLength)
@@ -297,7 +316,13 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * @author Ícaro Mota from stackoverflow
+     * add or remove divider character to the user text input
+     * @param working: user text input
+     * @param position: the  position where we want to insert the divider character on  user text input
+     * @param start: start editing position
+     * @param before: length before editing
+     * @return the text after add ir removing divider character from user text input
      */
     private fun manageDateDivider(working: String, position: Int, start: Int, before: Int): String {
         if (working.length == position) {
@@ -310,7 +335,8 @@ class DateEditText : EditText {
     }
 
     /**
-     *
+     * get date format based on divider character
+     * @return date format with divider character
      */
     private fun getDateFormatFromDivider(): String {
         return when (dateFormat) {

@@ -1,7 +1,7 @@
 package com.example.dateEditText
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
 
         dateEditText.listen()
+
 
     }
 }
