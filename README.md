@@ -1,6 +1,5 @@
 # Android-Mask-Date-EditText
 
-**Gradle**
 
 ```gradle
 
