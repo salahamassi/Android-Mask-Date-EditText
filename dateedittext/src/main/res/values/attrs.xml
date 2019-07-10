@@ -1,0 +1,17 @@
+<resources>
+    <declare-styleable name="DateEditText">
+        <attr name="dividerCharacter" format="enum">
+            <enum name="slash" value="0"/>
+            <enum name="minus" value="1"/>
+        </attr>
+
+        <attr name="dateFormat" format="enum">
+            <enum name="ddMMyyyy" value="0"/>
+            <enum name="MMyy" value="1"/>
+        </attr>
+
+        <attr name="maxDate" format="string"/>
+        <attr name="minDate" format="string"/>
+
+    </declare-styleable>
+</resources>
