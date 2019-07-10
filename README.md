@@ -3,7 +3,7 @@
 
 ```gradle
 
-  implementation 'com.github.salahamassi:android-mask-date-editText:v1.0'
+implementation 'com.github.salahamassi:android-mask-date-editText:v1.0'
 
 ```
 
