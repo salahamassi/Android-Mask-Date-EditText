@@ -12,7 +12,7 @@ This library simplified the way of get date from user input, Allows the user to 
 
 ```gradle
 
-implementation 'com.github.salahamassi:android-mask-date-editText:v1.01'
+implementation 'com.github.salahamassi:android-mask-date-editText:v1.02'
 
 ```
 ------ 
