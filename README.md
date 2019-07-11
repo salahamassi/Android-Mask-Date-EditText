@@ -66,6 +66,9 @@ please download the sample and watch the video to dive more deep.
 [![Android Mask Date EditText]
 (https://user-images.githubusercontent.com/17902030/61090744-5d370c00-a448-11e9-9534-fa4896745420.png)](https://youtu.be/7X8RxxemEaQ)
 
+[![Android Mask Date EditText]
+(https://user-images.githubusercontent.com/17902030/61090744-5d370c00-a448-11e9-9534-fa4896745420.png)](https://youtu.be/7X8RxxemEaQ)
+
 # Developer contact 
    * [Facebook](https://www.facebook.com/profile.php?id=100006656534009)
    * [Twitter](https://twitter.com/salahamassi)
