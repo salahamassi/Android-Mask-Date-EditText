@@ -63,8 +63,7 @@ please download the sample and watch the video to dive more deep.
 ![Screenshot_1562879351](https://user-images.githubusercontent.com/17902030/61085592-5228af80-a439-11e9-9e83-a8eeb003b434.png)
 
 # Video
-[![Android Mask Date EditText]
-(https://cloud.githubusercontent.com/assets/17902030/26277811/7dedf3f0-3d98-11e7-900e-4d0742c10b5a.png)](https://www.youtube.com/watch?v=hRSG96yFwuE)
+[![android mask date edit text](https://user-images.githubusercontent.com/17902030/61090744-5d370c00-a448-11e9-9534-fa4896745420.png)](https://www.youtube.com/watch?v=7X8RxxemEaQ)
 
 # Developer contact 
    * [Facebook](https://www.facebook.com/profile.php?id=100006656534009)
