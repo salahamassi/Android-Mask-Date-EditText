@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Date Edit Text</string>
-    <string name="naaun">\'</string>
+    <string name="invalid_day">Invalid Day</string>
+    <string name="invalid_month">Invalid Month</string>
+    <string name="invalid_day_of_month">Invalid Day Of Month</string>
+    <string name="invalid_day_of_month_leap_year">Invalid day Of Month For Leap Year</string>
+    <string name="invalid_date_max">Invalid Date Max Date</string>
+    <string name="invalid_date_min">Invalid Date Min Date</string>
 </resources>

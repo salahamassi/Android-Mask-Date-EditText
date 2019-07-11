@@ -5,6 +5,7 @@
             <enum name="minus" value="1"/>
         </attr>
 
+
         <attr name="dateFormat" format="enum">
             <enum name="ddMMyyyy" value="0"/>
             <enum name="MMyy" value="1"/>
@@ -12,6 +13,9 @@
 
         <attr name="maxDate" format="string"/>
         <attr name="minDate" format="string"/>
+        <attr name="autoCorrect" format="boolean"/>
+        <attr name="helperTextEnabled" format="boolean"/>
+        <attr name="helperTextHighlightedColor" format="color"/>
 
     </declare-styleable>
 </resources>
