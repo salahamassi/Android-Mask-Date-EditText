@@ -25,7 +25,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Normal Edit Text With auto correct = false"
+                android:text="Normal Edit Text With auto correct = false 📅📅"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Edit Text embedded in Text Input Layout With auto correct = false and enable helper text"
+                android:text="Edit Text embedded in Text Input Layout With auto correct = false and enable helper text 📅📅"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,11 +89,11 @@
                     android:imeOptions="actionNext"
                     app:autoCorrect="false"
                     app:dateFormat="ddMMyyyy"
-                    app:dividerCharacter="slash"
+                    app:dividerCharacter="minus"
                     app:helperTextEnabled="true"
                     app:helperTextHighlightedColor="@color/colorPrimary"
-                    app:maxDate="01/12/2100"
-                    app:minDate="01/12/1900"
+                    app:maxDate="01-12-2100"
+                    app:minDate="01-12-1900"
                     tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Normal Edit Text With auto correct = true"
+                android:text="Normal Edit Text With auto correct = true 💳💳"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,13 +124,13 @@
                 android:layout_marginRight="8dp"
                 android:imeOptions="actionNext"
                 app:autoCorrect="true"
-                app:dateFormat="ddMMyyyy"
+                app:dateFormat="MMyy"
                 app:dividerCharacter="slash"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/thirdTextView"
-                app:maxDate="01/12/2100"
-                app:minDate="01/12/1900" />
+                app:maxDate="01/25"
+                app:minDate="01/99" />
 
             <TextView
                 android:id="@+id/fourthTextView"
@@ -139,7 +139,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Edit Text embedded in Text Input Layout With auto correct = true"
+                android:text="Edit Text embedded in Text Input Layout With auto correct = true 📅📅"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -179,7 +179,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Normal Edit Text With auto correct = true and MMyy format"
+                android:text="Normal Edit Text With auto correct = true and MMyy format 💳💳"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -205,8 +205,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/fifthTextView"
-                app:maxDate="12-22"
-                app:minDate="01-19" />
+                app:maxDate="12-25"
+                app:minDate="01-99" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

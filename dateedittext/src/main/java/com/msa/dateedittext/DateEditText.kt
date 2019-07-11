@@ -472,6 +472,7 @@ class DateEditText : TextInputEditText {
         valueWithError = value
         if (parent.parent is TextInputLayout){
             val parentTextInputLayout = parent.parent as TextInputLayout
+            parentTextInputLayout.helperText = null
             parentTextInputLayout.error = errorMessage
             if  (errorMessage == null){
                 parentTextInputLayout.isErrorEnabled = false
