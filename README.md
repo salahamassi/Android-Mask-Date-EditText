@@ -43,18 +43,18 @@ please download the sample and watch the video to dive more deep.
 * `dividerCharacter`
  	* You can choose between two divider Character "/" or "-".
         
-* `maxDate`
- 	* set the max date which can user enter it as a string from xml and as a Date object from the code.
+* `mxDate`
+ 	* Set the max date which can user enter it as a string from xml and as a Date object from the code.
 
 * `minDate`
- 	* set the min date which can user enter it as a string from xml and as a Date object from the code.
+ 	* Set the min date which can user enter it as a string from xml and as a Date object from the code.
 
 * `autoCorrect`
- 	* if you want to show error alert to user if he enters something invalid set autoCorrect = false, if you want autocorrecting to what the user inputing set it to "true".
+ 	* If you want to show error alert to user if he enters something invalid set autoCorrect = false, if you want autocorrecting to what the user inputing set it to "true".
         
         
 * `helperTextEnabled`
- 	* show helper text, Used just with TextInputLayout.
+ 	* Show helper text, Used just with TextInputLayout.
 
 * `helperTextHighlightedColor`
  	* Highlighted helper text color for what user inputed.
