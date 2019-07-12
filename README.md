@@ -1,6 +1,6 @@
 # Android FixDate EditText
 
-![PHOTO-2019-07-12-15-35-49](https://user-images.githubusercontent.com/17902030/61144824-a6d23600-a4de-11e9-8116-5b16cd34e3a3.jpg)
+![PHOTO-2019-07-12-15-35-49](https://user-images.githubusercontent.com/17902030/61145017-1e07ca00-a4df-11e9-884f-4b16d0270db7.jpg)
 
 # What is it? 
 This library simplified the way of get date from user input, Allows the user to enter a date as a text and then verify it based on date format, divider character and min or max date with other options.
