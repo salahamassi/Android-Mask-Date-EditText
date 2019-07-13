@@ -44,7 +44,7 @@ please download the sample and watch the video to dive more deep.
 * `dividerCharacter`
  	* You can choose between two divider Character "/" or "-".
         
-* `mxDate`
+* `maxDate`
  	* Set the max date which can user enter it as a string from xml and as a Date object from the code.
 
 * `minDate`
