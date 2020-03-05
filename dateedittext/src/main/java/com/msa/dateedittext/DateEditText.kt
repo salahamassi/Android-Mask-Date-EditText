@@ -350,7 +350,7 @@ class DateEditText : TextInputEditText {
                 }
             }
             //not Leap year
-            if (year % 100 != 0 || year % 400 != 0) {
+            if (isLeapYear(year).not()) {
                 val month = mValue.substring(3, 5).toInt()
                 val day = mValue.substring(0, 2).toInt()
                 if (month == 2 && day >= 28) {
@@ -363,6 +363,16 @@ class DateEditText : TextInputEditText {
             }
         }
         return mValue
+    }
+
+    private fun isLeapYear(year: Int) =  when {
+        year % 4 == 0 -> {
+            when {
+                year % 100 == 0 -> year % 400 == 0
+                else -> true
+            }
+        }
+        else -> false
     }
 
     /**
