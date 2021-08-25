@@ -30,6 +30,7 @@ class DateEditText : TextInputEditText {
     enum class DividerCharacter(val value: String) {
         Minus("-"),
         Slash("/"),
+        Point(".")
     }
 
 
@@ -129,10 +130,16 @@ class DateEditText : TextInputEditText {
      */
     private fun getDividerCharacter(typedArray: TypedArray) {
         val dividerCharacter = typedArray.getInt(R.styleable.DateEditText_dividerCharacter, 0)
-        if (dividerCharacter == 0) {
-            this.dividerCharacter = DividerCharacter.Slash
-        } else if (dividerCharacter == 1) {
-            this.dividerCharacter = DividerCharacter.Minus
+        when (dividerCharacter) {
+            0 -> {
+                this.dividerCharacter = DividerCharacter.Slash
+            }
+            1 -> {
+                this.dividerCharacter = DividerCharacter.Minus
+            }
+            2 -> {
+                this.dividerCharacter = DividerCharacter.Point
+            }
         }
     }
 

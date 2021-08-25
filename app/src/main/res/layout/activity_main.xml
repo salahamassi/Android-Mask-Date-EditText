@@ -44,7 +44,7 @@
                 android:imeOptions="actionNext"
                 app:autoCorrect="false"
                 app:dateFormat="ddMMyyyy"
-                app:dividerCharacter="slash"
+                app:dividerCharacter="point"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
