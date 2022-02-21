@@ -42,7 +42,7 @@ please download the sample and watch the video to dive more deep.
  	* You can choose between two format "ddMMyyyy" or "MMyy" maybe in the future i will add more, you can add and then make pull request. 
         
 * `dividerCharacter`
- 	* You can choose between two divider Character "/" or "-".
+ 	* You can choose between three divider Character "/" or "-" or "."
         
 * `maxDate`
  	* Set the max date which can user enter it as a string from xml and as a Date object from the code.

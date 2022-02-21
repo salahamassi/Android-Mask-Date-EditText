@@ -3,6 +3,7 @@
         <attr name="dividerCharacter" format="enum">
             <enum name="slash" value="0"/>
             <enum name="minus" value="1"/>
+            <enum name="point" value="2"/>
         </attr>
 
 
