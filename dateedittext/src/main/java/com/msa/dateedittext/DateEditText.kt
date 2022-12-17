@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.text.*
 import android.text.style.ForegroundColorSpan
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -25,6 +26,7 @@ class DateEditText : TextInputEditText {
     enum class DateFormat(val value: String) {
         DDMMyyyy("ddMMyyyy"),
         MMyy("MMyy"),
+        DDMM("DDMM"),
     }
 
     enum class DividerCharacter(val value: String) {
@@ -118,6 +120,8 @@ class DateEditText : TextInputEditText {
             this.dateFormat = DateFormat.DDMMyyyy
         } else if (dateFormat == 1) {
             this.dateFormat = DateFormat.MMyy
+        }else if (dateFormat == 2){
+            this.dateFormat = DateFormat.DDMM
         }
         if (hint.isNullOrEmpty()){
             hint = getDateFormatFromDivider()
@@ -189,7 +193,20 @@ class DateEditText : TextInputEditText {
             if (month > 12 || month <= 0) {
                 throw IllegalArgumentException("Invalid date")
             }
-        } else if (dateFormat == DateFormat.DDMMyyyy) {
+        }else if (dateFormat == DateFormat.DDMM){
+            if (date.length != 5){
+                throw  IllegalArgumentException("Invalid date")
+            }
+            val day = date.substring(0,2).toInt()
+            if (day > 31){
+                throw IllegalArgumentException("Invalid day format")
+            }
+            val month = date.substring(0, 2).toInt()
+            if (month > 12 || month <= 0) {
+                throw IllegalArgumentException("Invalid month format")
+            }
+        }
+        else if (dateFormat == DateFormat.DDMMyyyy) {
             if (date.length != 10) {
                 throw IllegalArgumentException("Invalid date")
             }
@@ -278,6 +295,8 @@ class DateEditText : TextInputEditText {
         } else if (dateFormat == DateFormat.DDMMyyyy) {
             return validateddMMyyyyDateFormat(value)
 
+        }else if (dateFormat  == DateFormat.DDMM){
+            return validateDDMMateFormat(value)
         }
         return value
     }
@@ -307,7 +326,9 @@ class DateEditText : TextInputEditText {
             val month = mValue.substring(3, 5).toInt()
             if (month > 12 || month == 0) {
                 if (autoCorrect){
-                    mValue = mValue.replace(month.toString(), "12", false)
+                    val left = mValue.substring(0,2)
+                    val right = mValue.substring(5)
+                    mValue = left+"/12/"+right
                 }else{
                     setError(value=  mValue.substring(0,5), errorMessage =  context.getString(R.string.invalid_month))
                 }
@@ -383,6 +404,57 @@ class DateEditText : TextInputEditText {
     }
 
     /**
+     * validate user text input for DDMM Date Format
+     * @param  value: String (user text input)
+     * @return the corrected value
+     * inherited from validateMMyyDateFormat
+     */
+
+    private fun validateDDMMateFormat(value: String): String {
+        var mValue = value
+
+        // validate day
+        if (mValue.length >= 2) {
+            val day = mValue.substring(0, 2).toInt()
+            if (day > 31 || day <= 0) {
+                if (autoCorrect) {
+                    mValue = "31"
+                } else {
+                    setError(value=  day.toString(), errorMessage =  context.getString(R.string.invalid_day))
+                }
+            }
+        }
+        // validate month
+        if (mValue.length == 5) {
+            val day = mValue.substring(0,2).toInt()
+            val month = mValue.substring(3).toInt()
+            if (month > 12 || month <= 0){
+                if (autoCorrect){
+                    mValue = mValue.substring(0,2)
+                    mValue = mValue+"/12"
+                }else{
+                    setError(value=  month.toString(), errorMessage =  context.getString(R.string.invalid_month))
+                }
+            }
+
+
+            //febr not be more 30 :O
+            if (month == 2 && day > 29){
+                if (autoCorrect){
+                    mValue = mValue.replace(day.toString(),"29")
+                }else{
+                    setError(value=  month.toString(), errorMessage =  context.getString(R.string.invalid_day))
+                }
+
+            }
+
+
+        }
+        return mValue
+    }
+
+
+    /**
      * validate user text input for MMyy Date Format
      * @param  value: String (user text input)
      * @return the corrected value
@@ -395,6 +467,7 @@ class DateEditText : TextInputEditText {
             val month = mValue.substring(0, 2).toInt()
             if (month > 12 || month == 0) {
                 if (autoCorrect) {
+
                     mValue = "12"
                 } else {
                     setError(value=  month.toString(), errorMessage =  context.getString(R.string.invalid_month))
@@ -466,7 +539,7 @@ class DateEditText : TextInputEditText {
      */
     private fun getDateFormatFromDivider(): String {
         return when (dateFormat) {
-            DateFormat.MMyy -> dateFormat.value.substring(0, 2) + dividerCharacter.value + dateFormat.value.substring(
+            DateFormat.MMyy,DateFormat.DDMM -> dateFormat.value.substring(0, 2) + dividerCharacter.value + dateFormat.value.substring(
                 2,
                 4
             )
@@ -477,6 +550,7 @@ class DateEditText : TextInputEditText {
                 2,
                 4
             ) + dividerCharacter.value + dateFormat.value.substring(4, 8)
+
         }
     }
 
