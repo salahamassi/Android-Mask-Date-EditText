@@ -197,7 +197,7 @@ class DateEditText : TextInputEditText {
             val day = date.substring(0, 2).toInt()
             val month = date.substring(3, 5).toInt()
             val year = date.substring(6, 10).toInt()
-            val isLeapYear = (year % 100 != 0 || year % 400 != 0)
+            val isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
 
             if (month > 12 || month <= 0) {
                 throw IllegalArgumentException("Invalid date")
@@ -300,6 +300,7 @@ class DateEditText : TextInputEditText {
                     setError(value=  mValue.substring(0, 2), errorMessage = context.getString(R.string.invalid_day))
                 }
             }
+
         }
 
         // validate month
@@ -320,7 +321,7 @@ class DateEditText : TextInputEditText {
                 }else{
                     setError(value=  mValue.substring(0,5), errorMessage =  context.getString(R.string.invalid_day_of_month))
                 }
-            } else if (month == 2 && day == 31) {
+            } else if (month == 2 && day > 29) {
                 if (autoCorrect){
                     mValue = mValue.replace(day.toString(), "29", false)
                 }else{
@@ -360,11 +361,11 @@ class DateEditText : TextInputEditText {
             if (isLeapYear(year).not()) {
                 val month = mValue.substring(3, 5).toInt()
                 val day = mValue.substring(0, 2).toInt()
-                if (month == 2 && day >= 28) {
+                if (month == 2 && day > 28) {
                     if (autoCorrect){
                         mValue = mValue.replace(day.toString(), "28", false)
-                    }else{
-                        setError(value=  mValue, errorMessage =  context.getString(R.string.invalid_day_of_month_leap_year))
+                    } else {
+                        setError(value=  mValue, errorMessage =  context.getString(R.string.invalid_day_of_month))
                     }
                 }
             }
